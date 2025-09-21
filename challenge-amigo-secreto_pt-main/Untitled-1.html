@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Amigo Secreto</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fdf5e6;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    header {
+      background-color: #4169e1;
+      padding: 20px;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    main {
+      margin-top: 30px;
+    }
+
+    input {
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      width: 200px;
+    }
+
+    button {
+      padding: 10px 15px;
+      margin-left: 5px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    #addBtn {
+      background-color: #dcdcdc;
+    }
+
+    #sortearBtn {
+      background-color: #ff4500;
+      color: white;
+      margin-top: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 15px;
+    }
+
+    li {
+      font-size: 18px;
+      margin: 5px 0;
+    }
+
+    #resultado {
+      margin-top: 20px;
+      font-size: 22px;
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <header>🎁 Amigo Secreto</header>
+
+  <main>
+    <h2>Digite o nome dos seus amigos</h2>
+    <input type="text" id="nomeInput" placeholder="Digite um nome">
+    <button id="addBtn">Adicionar</button>
+
+    <ul id="lista"></ul>
+
+    <button id="sortearBtn">Sortear amigo</button>
+
+    <div id="resultado"></div>
+  </main>
+
+  <script>
+    const input = document.getElementById("nomeInput");
+    const addBtn = document.getElementById("addBtn");
+    const lista = document.getElementById("lista");
+    const sortearBtn = document.getElementById("sortearBtn");
+    const resultado = document.getElementById("resultado");
+
+    let nomes = [];
+
+    // Adicionar nome na lista
+    addBtn.addEventListener("click", () => {
+      const nome = input.value.trim();
+      if (nome && !nomes.includes(nome)) {
+        nomes.push(nome);
+
+        const li = document.createElement("li");
+        li.textContent = nome;
+        lista.appendChild(li);
+
+        input.value = "";
+        input.focus();
+      }
+    });
+
+    // Sortear amigo
+    sortearBtn.addEventListener("click", () => {
+      if (nomes.length < 2) {
+        resultado.textContent = "Adicione pelo menos 2 amigos para sortear!";
+        resultado.style.color = "red";
+        return;
+      }
+
+      const sorteado = nomes[Math.floor(Math.random() * nomes.length)];
+      resultado.textContent = "🎉 Seu amigo secreto é: " + sorteado + "!";
+      resultado.style.color = "green";
+    });
+  </script>
+
+</body>
+</html>
