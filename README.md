@@ -33,7 +33,7 @@ Como jogar localmente
 
 Baixe ou clone este repositório:
 
-git clone https://github.com/LucasMacielMacie/desafio-amigo-secreto.git
+git clone https://github.com/LucasMacielMaciel/desafio-amigo-secreto.git
 
 
 Abra a pasta do projeto no Visual Studio Code.
